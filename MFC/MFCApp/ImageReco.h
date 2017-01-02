@@ -11,13 +11,12 @@ public:
 	ImageReco(CWnd* pParent = NULL);
 	virtual ~ImageReco();
 
-// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_PARA_SET };
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual void AssertValid() const;
 	DECLARE_MESSAGE_MAP()
 public:

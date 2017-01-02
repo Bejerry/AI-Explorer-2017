@@ -89,7 +89,3 @@ void CMainFrame::Dump(CDumpContext& dc) const
 	CFrameWnd::Dump(dc);
 }
 #endif //_DEBUG
-
-
-// CMainFrame 消息处理程序
-

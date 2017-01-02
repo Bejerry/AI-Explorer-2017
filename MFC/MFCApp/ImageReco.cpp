@@ -123,11 +123,6 @@ void ImageReco::OnBnClickedBtnTarget()
 
 void ImageReco::OnEnChangeEdtThresh()
 {
-	// TODO:  If this is a RICHEDIT control, the control will not
-	// send this notification unless you override the CDialogEx::OnInitDialog()
-	// function and call CRichEditCtrl().SetEventMask()
-	// with the ENM_CHANGE flag ORed into the mask.
-
 	UpdateData(TRUE);
 }
 
@@ -299,76 +294,8 @@ void ImageReco::AssertValid() const
 		// It is dangerous to pass C++ objects from one thread to
 		// another, unless the objects are designed to be used in
 		// such a manner.
+		/***************
+		http://www.cnblogs.com/yan-boy/archive/2012/09/08/2676154.html
+		**************************/
 	}
 }
-
-/***************
-http://www.cnblogs.com/yan-boy/archive/2012/09/08/2676154.html
-下面的英文的大意是说：C++中在线程间传递对象是不安全的。原因有：
-
-1、 mfc的大多数类不是线程安全的，调用传入对象的成员函数可能不会报错，但是未必能达到程序预定的功能！
-
-2、 mfc与界面有关的类，其大多数成员方法都是通过sendmessage实现的，如果消息处理函数本身不是线程安全的，你从工作线程中调用这些方法迟早会同你界面线程的用户消息响应发生冲突；
-
-3、对于CWnd相关的类，即使传入窗口句柄，有时操作也会引起异常（ASSERT异常）：通过句柄获取窗口对象并且调用其成员函数或者成员变量！因为该对象是临时对象，访问其成员变量没有意义，访问其成员函数可能会抛出异常！
-
-最后是通过自定义消息响应函数的机制来实现的。
-
-在对话框类的头文件里加上
-
-#define WM_MY_MESSAGE WM_USER+100
-
-在它的AFX_MSG消息响应函数模块中加上
-
-afx_msg void OnMyMessage(WParam wParam,LParam lParam);
-
-在cpp文件中添加消息映射
-
-On_Message(WM_MY_MESSAGE,OnMyMessage)
-
-最后在加上具体的实现：
-
-void CTestDlg ::OnMyMessage(WParam wParam,LParam lParam)
-
-{
-
-　　…………
-
-  　　…………
-
-	　　CMydlg *dlg=new CMyDlg();
-
-	  　　dlg.Create(……);
-
-		　　dlg.ShowWindow(……);
-
-		  }
-
-
-
-		  在线程函数方面就这么写了
-
-		  void CTestDlg::OnButton1()
-
-		  {
-
-		  　　hThread=CreateThread(NULL,0,ThreadFunc,m_hWnd,0,&ThreadID);
-
-			　　CloseHandle(hThread);
-
-			  }
-
-			  DWORD WINAPI ThreadFunc(LPVOID LpParameter)
-
-			  {
-
-			  　　…………
-
-				　　HWND hwnd=(HWND)LpParameter;
-
-				  　　CWnd *pWnd=CWnd::FromHandle(hwnd);
-
-					　　pWnd->SendMessage(WM_My_Message,(WPARAM)(&str));
-
-					  }
-**************************/

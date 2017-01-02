@@ -104,19 +104,6 @@ int Utils::Get3Min(int a, int b, int c)
 	return a > b ? b > c ? c : b : a > c ? c : a;
 }
 
-
-/**
-Usage Direction:
-CLSID encoderClsid
-GetEncoderClsid(L"image/jpeg", &m_jpgClsid);
-GetEncoderClsid(L"image/png", &encoderClsid);
-GetEncoderClsid(L"image/bmp", &encoderClsid);
-GetEncoderClsid(L"image/gif", &encoderClsid);
-GetEncoderClsid(L"image/tiff", &encoderClsid);
-**/
-
-
-
 #if 0
 // GDIø‚ π”√
 #include <gdiplus.h>

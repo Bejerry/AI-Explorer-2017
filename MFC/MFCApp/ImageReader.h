@@ -33,10 +33,6 @@ private:
 	Utils *m_pUtils;
 public:
 	static void SetFilePath(string filePath);
-	static void SetTargetFile(string file);  /*
-	static std::string Tchar2Str(TCHAR *str);
-	static std::string CStr2Str(CString CStr);
-	static const char* CStr2Char(CString CStr);
-	LPWSTR Str2WStr(const std::string& s);*/
+	static void SetTargetFile(string file);
 };
 

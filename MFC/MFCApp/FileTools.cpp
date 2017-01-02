@@ -53,13 +53,6 @@ BOOLEAN FileTools::SaveThumbnail(string img, BOOLEAN isThumb, Image* pThumb)
 	return TRUE;
 }
 
-/*
- http://blog.csdn.net/chenlycly/article/details/24112955 http://www.cnblogs.com/huhu0013/p/4642986.html
- Bitmap bPic(Str2WStr(iPath));
- Bitmap* pThumbnail = static_cast<Bitmap*>(bPic.GetThumbnailImage(100, 75, NULL, NULL));
-*/
-
-
 string FileTools::GetPath(string path, BOOLEAN isThumb, int site)
 {
 	size_t pos = site;

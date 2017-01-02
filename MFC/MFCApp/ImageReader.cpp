@@ -111,7 +111,6 @@ vector<string>& ImageReader::GetFile(string path, F_Type type)
 
 using namespace cv;
 
-// Temp:PNG is ok.
 // sFold & dFold should be existed!
 void ImageReader::GenTargetFile(string sFold, string dFold, F_Type sType, F_Type dType)
 {
@@ -146,10 +145,6 @@ void ImageReader::testPics(HWND hWnd)
 	{
 		iPath = m_filePath + m_fileList[fileNum];
 
-		// Test thumbnails 
-		// http://blog.csdn.net/chenlycly/article/details/24112955 http://www.cnblogs.com/huhu0013/p/4642986.html
-		// Bitmap bPic(Str2WStr(iPath));
-		// Bitmap* pThumbnail = static_cast<Bitmap*>(bPic.GetThumbnailImage(100, 75, NULL, NULL));
 		file = m_pUtils->Str2WStr(iPath);
 		Image pic(file);
 		Image *ptThm = pic.GetThumbnailImage(30, 30, NULL, NULL);
@@ -189,8 +184,6 @@ void ImageReader::testPics(HWND hWnd)
 #endif
 		waitKey(0);
 	}
-
-
 
 	//Test Math pic:
 	IsIdentical("MyNew\\", "MyNew\\pattern.png");

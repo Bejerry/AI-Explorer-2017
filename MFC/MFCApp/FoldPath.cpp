@@ -6,9 +6,6 @@
 #include "FoldPath.h"
 #include "afxdialogex.h"
 
-
-// FoldPath dialog
-
 IMPLEMENT_DYNAMIC(FoldPath, CDialogEx)
 
 FoldPath::FoldPath(CWnd* pParent /*=NULL*/)
@@ -29,6 +26,3 @@ void FoldPath::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(FoldPath, CDialogEx)
 END_MESSAGE_MAP()
-
-
-// FoldPath message handlers
